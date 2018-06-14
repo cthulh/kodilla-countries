@@ -6,8 +6,55 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
-
+    <h1>Country search engine</h1>
+    <button id="search">Search a country</button>
+    <input id="search-name" type="text" />
+    <div class="output">
+      <h2>List of countries</h2>
+      <div id="countries">
+      </div>
+    </div>
+    <!-- -->
+    <!-- -->
+    <!-- Mustache template -->
+    <script id="country-template" type="x-tmpl-mustache">
+      <div class="country">
+        <header>
+          <img class="flag" />
+          <h3 class="country-name">{{ name }}</h3>
+          <h2>Information: </h2>
+        </header>
+        <section>
+          <div class="capitol">
+            <div class="title">Capital : </div>
+            <div class="value">{{ capital }}</div>
+          </div>
+          <div class="land">
+            <div class="title">Land area : </div>
+            <div class="value">{{ area }}</div>
+          </div>
+          <div class="population">
+            <div class="title">Population : </div>
+            <div class="value">{{ population }}</div>
+          </div>
+          <div class="language">
+            <div class="title">Language(s) : </div>
+            <div class="value">{{ languages }}</div>
+          </div>
+          <div class="currency">
+            <div class="title">Currency : </div>
+            <div class="value">{{ currencies }}</div>
+          </div>
+          <footer></footer>
+        </section>
+      </div>
+    </script>
+    <!--  -->
+    <!--  -->
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
     <script src="app.js"></script>
+    <!--  -->
+    <!--  -->
   </body>
 </html>

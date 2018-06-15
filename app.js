@@ -24,7 +24,7 @@
       fetch(url + country)
       .then(res => res.json())
       .catch(error => document.getElementById('countries').innerHTML = 'Error: ' + error)
-      .then(showCountriesList);
+      .then( resp => {console.log(resp);showCountriesList(resp.filter(cntry => cntry.name.indexOf(country) !== -1))});
     } else {
       document.getElementById('countries').innerHTML = 'Incorrect input';
     }
@@ -33,7 +33,7 @@
   function showCountriesList(resp) {
     document.getElementById('countries').innerHTML = '';
     console.log(resp);
-    if (resp.status !== 404) {
+    if (resp.length > 0) {
       resp.forEach(function(item){
         console.log(item);
         generateTemplate({

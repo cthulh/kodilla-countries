@@ -24,18 +24,21 @@
       fetch(url + country)
       .then(res => res.json())
       .catch(error => document.getElementById('countries').innerHTML = 'Error: ' + error)
-      .then( resp => {console.log(resp);showCountriesList(resp.filter(cntry => cntry.name.indexOf(country) !== -1))});
+      .then( resp => showCountriesList(resp) );
     } else {
       document.getElementById('countries').innerHTML = 'Incorrect input';
     }
   }
 
   function showCountriesList(resp) {
+    var country = document.getElementById('search-name').value;
     document.getElementById('countries').innerHTML = '';
-    console.log(resp);
     if (resp.length > 0) {
-      resp.forEach(function(item){
-        console.log(item);
+      resp.filter(
+        cntry => cntry.name.toLowerCase().indexOf(country.toLowerCase()) !== -1
+    )
+      .forEach(
+        item => {
         generateTemplate({
           name: item.name,
           capital: item.capital,
